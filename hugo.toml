@@ -1,0 +1,10 @@
+baseURL = "https://arif.sh/"
+languageCode = "en-us"
+title = "arif.sh"
+
+[params]
+  author = "Arif"
+  description = "Software Developer | Co-founder of liftOS"
+
+[permalinks]
+  "/" = "/:filename/"

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - arif.sh</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: monospace;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #fffff0;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1 0 auto;
+        }
+        a { 
+            color: #333333;
+            text-decoration: none;
+        }
+        a:hover { 
+            text-decoration: underline;
+        }
+        header { 
+            margin-bottom: 40px; 
+            text-align: left;
+        }
+        nav { 
+            margin-bottom: 20px; 
+        }
+        nav a { 
+            margin-right: 15px; 
+        }
+        .content { 
+            margin-bottom: 40px; 
+        }
+        .post-title { 
+            font-size: 1.5em; 
+            color: #1a1a1a; 
+        }
+        .post-meta { 
+            font-size: 0.9em; 
+            color: #666666; 
+        }
+        pre {
+            background-color: #f0f0e0;
+            padding: 10px;
+            overflow-x: auto;
+            border: 1px solid #d9d9d9;
+        }
+        code { 
+            color: #333333; 
+        }
+        .glitch {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .glitch::before {
+            left: 1px;
+            text-shadow: -1px 0 #00ff00;
+            clip: rect(12px, 275px, 45px, 0);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -1px;
+            text-shadow: -1px 0 #ff00ff;
+            clip: rect(42px, 275px, 70px, 0);
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(40px, 9999px, 20px, 0); }
+            20% { clip: rect(15px, 9999px, 28px, 0); }
+            40% { clip: rect(21px, 9999px, 48px, 0); }
+            60% { clip: rect(33px, 9999px, 1px, 0); }
+            80% { clip: rect(46px, 9999px, 50px, 0); }
+            100% { clip: rect(9px, 9999px, 4px, 0); }
+        }
+        footer {
+            flex-shrink: 0;
+            text-align: center;
+            padding: 20px 0;
+            background-color: #fffff0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="glitch" data-text="arif.sh">arif.sh</h1>
+            <p>Software Developer | Co-founder of liftOS</p>
+            <nav>
+                
+            </nav>
+        </header>
+        <main class="content">
+            
+<div class="post-list">
+    
+    <article class="post-item">
+        <div class="post-date">2024-06-23</div>
+        <h2 class="post-title"><a href="/posts/welcome/">Welcome to my blog</a></h2>
+    </article>
+    
+</div>
+
+<style>
+    .post-list {
+        width: 100%;
+    }
+    .post-item {
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 1rem;
+    }
+    .post-date {
+        font-size: 0.8rem;
+        color: #666;
+    }
+    .post-title {
+        margin: 0.2rem 0;
+        font-size: 1.2rem;
+    }
+    .post-title a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .post-title a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Arif</p>
+    </footer>
+</body>
+</html>

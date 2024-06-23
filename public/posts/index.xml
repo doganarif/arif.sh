@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on arif.sh</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on arif.sh</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Embracing Concurrency in Go: A Senior Developer&#39;s Perspective</title>
+      <link>http://localhost:1313/posts/go-concurrency/</link>
+      <pubDate>Sun, 23 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/go-concurrency/</guid>
+      <description>Hey there, fellow code enthusiasts! It&amp;rsquo;s been a while since I last sat down to write, but today I want to chat about something that&amp;rsquo;s been on my mind a lot lately: concurrency in Go. Now, I know what you&amp;rsquo;re thinking - &amp;ldquo;Oh great, another post about goroutines and channels.&amp;rdquo; But hear me out, because after years of wrestling with concurrency in other languages, I&amp;rsquo;ve got to say, Go&amp;rsquo;s approach is a game-changer.</description>
+    </item>
+    <item>
+      <title>Real-Time WebSockets with Go and WebAssembly: A Complete Guide</title>
+      <link>http://localhost:1313/posts/go-wasm/</link>
+      <pubDate>Thu, 09 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/go-wasm/</guid>
+      <description>WebAssembly with Go has always intrigued me, but finding comprehensive examples was challenging. After extensive research, I&amp;rsquo;m sharing my learnings and code examples for creating a real-time application using WebSockets and WebAssembly.&#xA;Project Structure . ├── main.go ├── wasm/ ├── pkg/socket/ ├── public/ └── Makefile Components 1. HTML (public/index.html) &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Go WASM Button Example&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;#34;wasm_exec.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;style&amp;gt; #btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;p id=&amp;#34;text&amp;#34;&amp;gt;&amp;lt;/p&amp;gt; &amp;lt;button id=&amp;#34;btn&amp;#34;&amp;gt;Click me&amp;lt;/button&amp;gt; &amp;lt;script&amp;gt; const go = new Go(); WebAssembly.</description>
+    </item>
+  </channel>
+</rss>
