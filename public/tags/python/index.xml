@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on arif.sh</title>
+    <link>http://localhost:1313/tags/python/</link>
+    <description>Recent content in Python on arif.sh</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Senior Developer&#39;s Guide to Dockerizing Django with NumPy and Gunicorn</title>
+      <link>http://localhost:1313/posts/gunicorn/</link>
+      <pubDate>Sat, 06 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/gunicorn/</guid>
+      <description>As senior developers, we often face the challenge of containerizing complex Django applications. Today, we&amp;rsquo;ll tackle Dockerizing a Django project that uses NumPy and Pillow, optimized for production with Gunicorn. We&amp;rsquo;ll focus on security, performance, and maintainability.&#xA;Tech Stack Django NumPy Pillow PostgreSQL Gunicorn Docker The Sophisticated Dockerfile Let&amp;rsquo;s create a production-ready Dockerfile:&#xA;# Use an official Python runtime as a parent image FROM python:3.9-slim-buster as builder # Set environment variables ENV PYTHONDONTWRITEBYTECODE 1 ENV PYTHONUNBUFFERED 1 # Set work directory WORKDIR /usr/src/app # Install system dependencies RUN apt-get update &amp;amp;&amp;amp; apt-get install -y --no-install-recommends \ build-essential \ libpq-dev \ libjpeg-dev \ zlib1g-dev \ &amp;amp;&amp;amp; rm -rf /var/lib/apt/lists/* # Install Python dependencies COPY requirements.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
 	<meta name="generator" content="Hugo 0.127.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>arif.sh</title>
     <style>
-        html, body {
+        html,
+        body {
             height: 100%;
             margin: 0;
             padding: 0;
         }
+
         body {
             font-family: monospace;
             line-height: 1.6;
@@ -19,6 +22,7 @@
             display: flex;
             flex-direction: column;
         }
+
         .container {
             max-width: 800px;
             width: 100%;
@@ -26,35 +30,46 @@
             padding: 20px;
             flex: 1 0 auto;
         }
-        a { 
+
+        a {
             color: #333333;
             text-decoration: none;
         }
-        a:hover { 
+
+        a:hover {
             text-decoration: underline;
         }
-        header { 
-            margin-bottom: 40px; 
+
+        header {
+            margin-bottom: 40px;
             text-align: left;
         }
-        nav { 
-            margin-bottom: 20px; 
+
+        nav {
+            margin-top: 15px;
+            margin-bottom: 20px;
         }
-        nav a { 
-            margin-right: 15px; 
+
+        nav a {
+            margin-right: 15px;
         }
-        .content { 
-            margin-bottom: 40px; 
+
+        .content {
+            margin-bottom: 40px;
         }
-        .post-title { 
-            font-size: 1.5em; 
-            color: #1a1a1a; 
+
+        .post-title {
+            font-size: 1.5em;
+            color: #1a1a1a;
         }
-        .post-meta { 
-            font-size: 0.9em; 
-            color: #666666; 
+
+        .post-meta {
+            font-size: 0.9em;
+            color: #666666;
         }
-        pre, code {
+
+        pre,
+        code {
             background-color: #1a1a1a;
             color: #ffffff;
             padding: 0.2em 0.4em;
@@ -62,20 +77,24 @@
             font-family: monospace;
             font-size: 0.9em;
         }
+
         pre {
             padding: 1em;
             overflow-x: auto;
         }
+
         pre code {
             background-color: transparent;
             padding: 0;
         }
+
         footer {
             flex-shrink: 0;
             text-align: center;
             padding: 20px 0;
             background-color: #fffff0;
         }
+
         .site-title {
             font-size: 1rem;
             font-weight: normal;
@@ -85,6 +104,7 @@
             text-decoration: none;
             color: inherit;
         }
+
         .site-title::before,
         .site-title::after {
             content: attr(data-text);
@@ -94,33 +114,85 @@
             width: 100%;
             height: 100%;
         }
+
         .site-title::before {
             left: 1px;
             text-shadow: -1px 0 #00ff00;
             clip: rect(8px, 275px, 30px, 0);
             animation: glitch-anim 3s infinite linear alternate-reverse;
         }
+
         .site-title::after {
             left: -1px;
             text-shadow: -1px 0 #ff00ff;
             clip: rect(28px, 275px, 46px, 0);
             animation: glitch-anim 2s infinite linear alternate-reverse;
         }
+
         @keyframes glitch-anim {
-            0% { clip: rect(26px, 9999px, 13px, 0); }
-            20% { clip: rect(10px, 9999px, 18px, 0); }
-            40% { clip: rect(14px, 9999px, 32px, 0); }
-            60% { clip: rect(22px, 9999px, 1px, 0); }
-            80% { clip: rect(30px, 9999px, 33px, 0); }
-            100% { clip: rect(6px, 9999px, 2px, 0); }
+            0% {
+                clip: rect(26px, 9999px, 13px, 0);
+            }
+
+            20% {
+                clip: rect(10px, 9999px, 18px, 0);
+            }
+
+            40% {
+                clip: rect(14px, 9999px, 32px, 0);
+            }
+
+            60% {
+                clip: rect(22px, 9999px, 1px, 0);
+            }
+
+            80% {
+                clip: rect(30px, 9999px, 33px, 0);
+            }
+
+            100% {
+                clip: rect(6px, 9999px, 2px, 0);
+            }
+        }
+
+        .meeting-link {
+            display: inline-block;
+            margin-left: 15px;
+            padding: 5px 10px;
+            background-color: #0066cc;
+            color: #ffffff;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+        }
+
+        .meeting-link:hover {
+            background-color: #004080;
+            text-decoration: none;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .header-text {
+            flex: 1;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
-            <h1><a href="http://localhost:1313/" class="site-title" data-text="arif.sh">arif.sh</a></h1>
-            <p>Software Developer | Co-founder of liftOS</p>
+            <div class="header-content">
+                <div class="header-text">
+                    <h1><a href="http://localhost:1313/" class="site-title" data-text="arif.sh">arif.sh</a></h1>
+                    <p>Software Developer | Founder of liftOS</p>
+                </div>
+                <a href="https://cal.com/arifcodes/letstalkstartups" class="meeting-link">Let's talk startups</a>
+            </div>
             <nav>
                 
             </nav>
@@ -137,6 +209,11 @@
     <article class="post-item">
         <div class="post-date">2023-11-09</div>
         <h2 class="post-title"><a href="/posts/go-wasm/">Real-Time WebSockets with Go and WebAssembly: A Complete Guide</a></h2>
+    </article>
+    
+    <article class="post-item">
+        <div class="post-date">2021-01-20</div>
+        <h2 class="post-title"><a href="/posts/gunicorn/">Senior Developer&#39;s Guide to Dockerizing Django with NumPy and Gunicorn</a></h2>
     </article>
     
 </div>
@@ -173,5 +250,5 @@
         <p>&copy; 2024 Arif</p>
     </footer>
 </body>
-</html>
 
+</html>

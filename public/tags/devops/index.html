@@ -4,7 +4,7 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categories - arif.sh</title>
+    <title>DevOps - arif.sh</title>
     <style>
         html,
         body {
@@ -45,6 +45,7 @@
         }
 
         nav {
+            margin-top: 15px;
             margin-bottom: 20px;
         }
 
@@ -152,17 +153,45 @@
                 clip: rect(6px, 9999px, 2px, 0);
             }
         }
+
+        .meeting-link {
+            display: inline-block;
+            margin-left: 15px;
+            padding: 5px 10px;
+            background-color: #0066cc;
+            color: #ffffff;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+        }
+
+        .meeting-link:hover {
+            background-color: #004080;
+            text-decoration: none;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .header-text {
+            flex: 1;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <header>
-            <h1><a href="http://localhost:1313/" class="site-title" data-text="arif.sh">arif.sh</a>
-            </h1>
-            <p>Software Developer | Founder of liftOS</p>
-            <p>Software Developer | Founder of liftOS</p>
-            <a href="https://cal.com/arifcodes/letstalkstartups" class="meeting-link">Let's talk startups</a>
+            <div class="header-content">
+                <div class="header-text">
+                    <h1><a href="http://localhost:1313/" class="site-title" data-text="arif.sh">arif.sh</a></h1>
+                    <p>Software Developer | Founder of liftOS</p>
+                </div>
+                <a href="https://cal.com/arifcodes/letstalkstartups" class="meeting-link">Let's talk startups</a>
+            </div>
             <nav>
                 
             </nav>
@@ -170,6 +199,11 @@
         <main class="content">
             
 <div class="post-list">
+    
+    <article class="post-item">
+        <div class="post-date">2024-07-06</div>
+        <h2 class="post-title"><a href="/posts/gunicorn/">Senior Developer&#39;s Guide to Dockerizing Django with NumPy and Gunicorn</a></h2>
+    </article>
     
     <article class="post-item">
         <div class="post-date">2024-06-23</div>

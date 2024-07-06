@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senior Developer&#39;s Guide to Dockerizing Django with NumPy and Gunicorn - arif.sh</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: monospace;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #fffff0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1 0 auto;
+        }
+
+        a {
+            color: #333333;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        nav {
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            margin-right: 15px;
+        }
+
+        .content {
+            margin-bottom: 40px;
+        }
+
+        .post-title {
+            font-size: 1.5em;
+            color: #1a1a1a;
+        }
+
+        .post-meta {
+            font-size: 0.9em;
+            color: #666666;
+        }
+
+        pre,
+        code {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            padding: 1em;
+            overflow-x: auto;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        footer {
+            flex-shrink: 0;
+            text-align: center;
+            padding: 20px 0;
+            background-color: #fffff0;
+        }
+
+        .site-title {
+            font-size: 1rem;
+            font-weight: normal;
+            text-transform: lowercase;
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .site-title::before,
+        .site-title::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .site-title::before {
+            left: 1px;
+            text-shadow: -1px 0 #00ff00;
+            clip: rect(8px, 275px, 30px, 0);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+
+        .site-title::after {
+            left: -1px;
+            text-shadow: -1px 0 #ff00ff;
+            clip: rect(28px, 275px, 46px, 0);
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                clip: rect(26px, 9999px, 13px, 0);
+            }
+
+            20% {
+                clip: rect(10px, 9999px, 18px, 0);
+            }
+
+            40% {
+                clip: rect(14px, 9999px, 32px, 0);
+            }
+
+            60% {
+                clip: rect(22px, 9999px, 1px, 0);
+            }
+
+            80% {
+                clip: rect(30px, 9999px, 33px, 0);
+            }
+
+            100% {
+                clip: rect(6px, 9999px, 2px, 0);
+            }
+        }
+
+        .meeting-link {
+            display: inline-block;
+            margin-left: 15px;
+            padding: 5px 10px;
+            background-color: #0066cc;
+            color: #ffffff;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+        }
+
+        .meeting-link:hover {
+            background-color: #004080;
+            text-decoration: none;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="header-text">
+                    <h1><a href="http://localhost:1313/" class="site-title" data-text="arif.sh">arif.sh</a></h1>
+                    <p>Software Developer | Founder of liftOS</p>
+                </div>
+                <a href="https://cal.com/arifcodes/letstalkstartups" class="meeting-link">Let's talk startups</a>
+            </div>
+            <nav>
+                
+            </nav>
+        </header>
+        <main class="content">
+            
+<article>
+    <h1 class="post-title">Senior Developer&#39;s Guide to Dockerizing Django with NumPy and Gunicorn</h1>
+    <div class="post-meta">
+        <time>January 20, 2021</time>
+    </div>
+    <div class="post-content">
+        <p>As senior developers, we often face the challenge of containerizing complex Django applications. Today, we&rsquo;ll tackle Dockerizing a Django project that uses NumPy and Pillow, optimized for production with Gunicorn. We&rsquo;ll focus on security, performance, and maintainability.</p>
+<h2 id="tech-stack">Tech Stack</h2>
+<ul>
+<li>Django</li>
+<li>NumPy</li>
+<li>Pillow</li>
+<li>PostgreSQL</li>
+<li>Gunicorn</li>
+<li>Docker</li>
+</ul>
+<h2 id="the-sophisticated-dockerfile">The Sophisticated Dockerfile</h2>
+<p>Let&rsquo;s create a production-ready Dockerfile:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># Use an official Python runtime as a parent image</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.9-slim-buster as builder</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Set environment variables</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PYTHONDONTWRITEBYTECODE <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PYTHONUNBUFFERED <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Set work directory</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /usr/src/app</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install system dependencies</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install -y --no-install-recommends <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    build-essential <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    libpq-dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    libjpeg-dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    zlib1g-dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> rm -rf /var/lib/apt/lists/*<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install Python dependencies</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> requirements.txt .<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Final stage</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.9-slim-buster</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Create directory for the app user</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> mkdir -p /home/app<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Create the app user</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> groupadd app <span style="color:#f92672">&amp;&amp;</span> useradd -g app app<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Create the home directory</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> HOME<span style="color:#f92672">=</span>/home/app<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> APP_HOME<span style="color:#f92672">=</span>/home/app/web<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> mkdir $APP_HOME<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> $APP_HOME</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install dependencies</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install -y --no-install-recommends <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    libpq-dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    libjpeg-dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    zlib1g-dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> rm -rf /var/lib/apt/lists/*<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> --from<span style="color:#f92672">=</span>builder /usr/src/app/wheels /wheels<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> --from<span style="color:#f92672">=</span>builder /usr/src/app/requirements.txt .<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pip install --no-cache /wheels/*<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy project</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . $APP_HOME<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Chown all the files to the app user</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> chown -R app:app $APP_HOME<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Change to the app user</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">USER</span><span style="color:#e6db74"> app</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Run gunicorn</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> gunicorn --bind 0.0.0.0:$PORT --workers $WORKERS --threads $THREADS --worker-class gthread your_project.wsgi:application<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>This Dockerfile uses multi-stage building to reduce the final image size and runs the application as a non-root user for improved security.</p>
+<h2 id="optimized-django-settings">Optimized Django Settings</h2>
+<p>Create a <code>settings</code> folder with <code>base.py</code>, <code>development.py</code>, and <code>production.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># settings/base.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pathlib <span style="color:#f92672">import</span> Path
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>BASE_DIR <span style="color:#f92672">=</span> Path(__file__)<span style="color:#f92672">.</span>resolve()<span style="color:#f92672">.</span>parent<span style="color:#f92672">.</span>parent
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SECRET_KEY <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>environ<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;DJANGO_SECRET_KEY&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ALLOWED_HOSTS <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>environ<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;DJANGO_ALLOWED_HOSTS&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ... rest of your settings ...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DATABASES <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;default&#39;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;ENGINE&#39;</span>: <span style="color:#e6db74">&#39;django.db.backends.postgresql&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;NAME&#39;</span>: os<span style="color:#f92672">.</span>environ<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;DB_NAME&#39;</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;USER&#39;</span>: os<span style="color:#f92672">.</span>environ<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;DB_USER&#39;</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;PASSWORD&#39;</span>: os<span style="color:#f92672">.</span>environ<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;DB_PASSWORD&#39;</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;HOST&#39;</span>: os<span style="color:#f92672">.</span>environ<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;DB_HOST&#39;</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;PORT&#39;</span>: os<span style="color:#f92672">.</span>environ<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;DB_PORT&#39;</span>, <span style="color:#e6db74">&#39;5432&#39;</span>),
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ... more settings ...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># settings/production.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> .base <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DEBUG <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Enable HSTS</span>
+</span></span><span style="display:flex;"><span>SECURE_HSTS_SECONDS <span style="color:#f92672">=</span> <span style="color:#ae81ff">31536000</span>
+</span></span><span style="display:flex;"><span>SECURE_HSTS_INCLUDE_SUBDOMAINS <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>SECURE_HSTS_PRELOAD <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Enable SSL redirect</span>
+</span></span><span style="display:flex;"><span>SECURE_SSL_REDIRECT <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set secure cookie settings</span>
+</span></span><span style="display:flex;"><span>SESSION_COOKIE_SECURE <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>CSRF_COOKIE_SECURE <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span></code></pre></div><h2 id="docker-compose-for-local-development">Docker Compose for Local Development</h2>
+<p>Create a <code>docker-compose.yml</code> for easy local development:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">web</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">build</span>: <span style="color:#ae81ff">.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">python manage.py runserver 0.0.0.0:8000</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">.:/home/app/web</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;8000:8000&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">env_file</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">.env.dev</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">db</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">db</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">postgres:13</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">postgres_data:/var/lib/postgresql/data/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">POSTGRES_USER=your_db_user</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">POSTGRES_PASSWORD=your_db_password</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">POSTGRES_DB=your_db_name</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">postgres_data</span>:
+</span></span></code></pre></div><h2 id="environment-variables">Environment Variables</h2>
+<p>Create a <code>.env.dev</code> file for development:</p>
+<pre tabindex="0"><code>DEBUG=True
+SECRET_KEY=your_secret_key
+DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1
+DB_NAME=your_db_name
+DB_USER=your_db_user
+DB_PASSWORD=your_db_password
+DB_HOST=db
+DB_PORT=5432
+</code></pre><h2 id="makefile-for-convenience">Makefile for Convenience</h2>
+<p>Create a comprehensive Makefile:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-makefile" data-lang="makefile"><span style="display:flex;"><span><span style="color:#a6e22e">.PHONY</span><span style="color:#f92672">:</span> build run test migrate shell clean
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">build</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	docker-compose build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">run</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	docker-compose up
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">test</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	docker-compose run web python manage.py test
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">migrate</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	docker-compose run web python manage.py migrate
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">shell</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	docker-compose run web python manage.py shell
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	docker-compose down -v
+</span></span></code></pre></div><h2 id="gunicorn-configuration">Gunicorn Configuration</h2>
+<p>Create a <code>gunicorn.conf.py</code> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> multiprocessing
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Number of worker processes</span>
+</span></span><span style="display:flex;"><span>workers <span style="color:#f92672">=</span> multiprocessing<span style="color:#f92672">.</span>cpu_count() <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Number of threads per worker</span>
+</span></span><span style="display:flex;"><span>threads <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Maximum requests a worker will process before restarting</span>
+</span></span><span style="display:flex;"><span>max_requests <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
+</span></span><span style="display:flex;"><span>max_requests_jitter <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Time to wait for requests on a Keep-Alive connection</span>
+</span></span><span style="display:flex;"><span>keepalive <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Log level</span>
+</span></span><span style="display:flex;"><span>loglevel <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;info&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Access log format</span>
+</span></span><span style="display:flex;"><span>access_log_format <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%(h)s</span><span style="color:#e6db74"> </span><span style="color:#e6db74">%(l)s</span><span style="color:#e6db74"> </span><span style="color:#e6db74">%(u)s</span><span style="color:#e6db74"> </span><span style="color:#e6db74">%(t)s</span><span style="color:#e6db74"> &#34;</span><span style="color:#e6db74">%(r)s</span><span style="color:#e6db74">&#34; </span><span style="color:#e6db74">%(s)s</span><span style="color:#e6db74"> </span><span style="color:#e6db74">%(b)s</span><span style="color:#e6db74"> &#34;</span><span style="color:#e6db74">%(f)s</span><span style="color:#e6db74">&#34; &#34;</span><span style="color:#e6db74">%(a)s</span><span style="color:#e6db74">&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Error log file</span>
+</span></span><span style="display:flex;"><span>errorlog <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;-&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Access log file</span>
+</span></span><span style="display:flex;"><span>accesslog <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;-&#39;</span>
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>This setup provides a robust, scalable, and secure environment for running Django applications with complex dependencies like NumPy and Pillow. Key takeaways:</p>
+<ol>
+<li>Use multi-stage builds to reduce image size.</li>
+<li>Run your application as a non-root user.</li>
+<li>Use environment variables for configuration.</li>
+<li>Implement proper settings for development and production environments.</li>
+<li>Use Docker Compose for local development.</li>
+<li>Create a Makefile for common tasks.</li>
+<li>Configure Gunicorn for optimal performance.</li>
+</ol>
+<p>Remember, always review and adjust these configurations based on your specific needs and security requirements. Regularly update your dependencies and Docker images to patch any vulnerabilities.</p>
+
+    </div>
+</article>
+
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Arif</p>
+    </footer>
+</body>
+
+</html>
