@@ -4,7 +4,7 @@ title = "arif.sh"
 
 [params]
   author = "Arif"
-  description = "Software Developer | Founder of liftOS"
+  description = "Software Developer | Founder @liftOS"
 
 [permalinks]
   "/" = "/:filename/"
