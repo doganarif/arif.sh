@@ -222,6 +222,15 @@
             align-items: center;
         }
 
+        #three-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
         @media (max-width: 600px) {
             .header-content {
                 flex-direction: column;
@@ -254,9 +263,11 @@
             animation: fadeIn 0.5s ease-in;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
 <body>
+    <div id="three-container"></div>
     <div class="container">
         <header>
             <div class="header-content">
@@ -275,66 +286,119 @@
         </header>
         <main class="content fade-in">
             
-<div class="post-list">
+<div class="post-list-container">
     
     <article class="post-item">
-        <div class="post-date">2024-06-23</div>
+        <time class="post-date">2024-06-23</time>
         <h2 class="post-title"><a href="/posts/go-concurrency/">Embracing Concurrency in Go: A Senior Developer&#39;s Perspective</a></h2>
     </article>
     
     <article class="post-item">
-        <div class="post-date">2023-11-09</div>
+        <time class="post-date">2023-11-09</time>
         <h2 class="post-title"><a href="/posts/go-wasm/">Real-Time WebSockets with Go and WebAssembly: A Complete Guide</a></h2>
     </article>
     
     <article class="post-item">
-        <div class="post-date">2021-01-20</div>
+        <time class="post-date">2021-01-20</time>
         <h2 class="post-title"><a href="/posts/gunicorn/">Senior Developer&#39;s Guide to Dockerizing Django with NumPy and Gunicorn</a></h2>
     </article>
     
+
+    
 </div>
+
+<style>
+    .post-list-container {
+        max-width: 760px;
+        margin: 0 auto;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        text-align: left;
+    }
+
+    .post-item {
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: baseline;
+        justify-content: flex-start;
+    }
+
+    .post-date {
+        font-size: 0.9rem;
+        color: var(--text-color);
+        opacity: 0.7;
+        min-width: 100px;
+        margin-right: 1rem;
+    }
+
+    .post-title {
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .post-title a {
+        color: var(--text-color);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .post-title a:hover {
+        color: var(--accent-color);
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+        list-style: none;
+        padding: 0;
+    }
+
+    .pagination li {
+        margin: 0 0.5rem;
+    }
+
+    .pagination li a {
+        padding: 0.5rem 1rem;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        text-decoration: none;
+        border: 1px solid var(--text-color);
+        border-radius: 3px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .pagination li.disabled a,
+    .pagination li.active a {
+        background-color: var(--text-color);
+        color: var(--bg-color);
+        cursor: default;
+    }
+
+    .pagination li a:hover:not(.active):not(.disabled) {
+        background-color: var(--text-color);
+        color: var(--bg-color);
+    }
+
+    @media (max-width: 600px) {
+        .post-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .post-date {
+            margin-bottom: 0.3rem;
+        }
+    }
+</style>
 
         </main>
     </div>
-    <footer>
-        <p>&copy; 2024 Arif</p>
-    </footer>
-    <script>
-        (function () {
-            const themeToggle = document.querySelector('.theme-toggle');
-            const html = document.documentElement;
-
-            function setTheme(theme) {
-                if (theme === 'light') {
-                    html.classList.remove('dark-theme');
-                } else {
-                    html.classList.add('dark-theme');
-                }
-                localStorage.setItem('theme', theme);
-            }
-
-            
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                setTheme(savedTheme);
-            }
-
-            
-            themeToggle.addEventListener('click', () => {
-                html.classList.toggle('dark-theme');
-                const newTheme = html.classList.contains('dark-theme') ? 'dark' : 'light';
-                setTheme(newTheme);
-            });
-
-            
-            themeToggle.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    themeToggle.click();
-                }
-            });
-        })();
-    </script>
+    <script src="/js/theme-toggle.js"></script>
+    <script src="/js/three-background.js"></script>
 </body>
 
 </html>

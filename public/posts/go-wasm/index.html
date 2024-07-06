@@ -221,6 +221,15 @@
             align-items: center;
         }
 
+        #three-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
         @media (max-width: 600px) {
             .header-content {
                 flex-direction: column;
@@ -253,9 +262,11 @@
             animation: fadeIn 0.5s ease-in;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
 <body>
+    <div id="three-container"></div>
     <div class="container">
         <header>
             <div class="header-content">
@@ -580,45 +591,8 @@
 
         </main>
     </div>
-    <footer>
-        <p>&copy; 2024 Arif</p>
-    </footer>
-    <script>
-        (function () {
-            const themeToggle = document.querySelector('.theme-toggle');
-            const html = document.documentElement;
-
-            function setTheme(theme) {
-                if (theme === 'light') {
-                    html.classList.remove('dark-theme');
-                } else {
-                    html.classList.add('dark-theme');
-                }
-                localStorage.setItem('theme', theme);
-            }
-
-            
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                setTheme(savedTheme);
-            }
-
-            
-            themeToggle.addEventListener('click', () => {
-                html.classList.toggle('dark-theme');
-                const newTheme = html.classList.contains('dark-theme') ? 'dark' : 'light';
-                setTheme(newTheme);
-            });
-
-            
-            themeToggle.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    themeToggle.click();
-                }
-            });
-        })();
-    </script>
+    <script src="/js/theme-toggle.js"></script>
+    <script src="/js/three-background.js"></script>
 </body>
 
 </html>
