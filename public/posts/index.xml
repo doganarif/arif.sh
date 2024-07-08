@@ -6,8 +6,15 @@
     <description>Recent content in Posts on arif.sh</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jul 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Balancing the Highs and Lows of Entrepreneurship: My Journey with liftOS</title>
+      <link>http://localhost:1313/posts/lifebalance/</link>
+      <pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/lifebalance/</guid>
+      <description>Launching liftOS last month was a monumental milestone for my co-founder, Ege, and me. As the founders of this ambitious project, we&amp;rsquo;ve immersed ourselves in every aspect of the business—meetings, development (my favorite part), team management, and constant communication. However, the journey has been a mix of exhilarating achievements and grueling challenges.&#xA;The Launch and the 24/7 Grind Since the launch, Ege and I have taken on the role of customer support, quite literally around the clock.</description>
+    </item>
     <item>
       <title>Embracing Concurrency in Go: A Senior Developer&#39;s Perspective</title>
       <link>http://localhost:1313/posts/go-concurrency/</link>

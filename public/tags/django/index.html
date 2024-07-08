@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en-us" class="dark-theme">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Django - arif.sh</title>
     <style>
+        :root {
+            --bg-color: #fffff0;
+            --text-color: #333333;
+            --accent-color: #0066cc;
+            --code-bg: #1a1a1a;
+            --code-color: #ffffff;
+            --button-bg: #0066cc;
+            --button-color: #ffffff;
+        }
+
+        .dark-theme {
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --accent-color: #4da6ff;
+            --code-bg: #2c2c2c;
+            --code-color: #ffffff;
+            --button-bg: #4da6ff;
+            --button-color: #1a1a1a;
+        }
+
         html,
         body {
             height: 100%;
@@ -15,24 +35,26 @@
 
         body {
             font-family: monospace;
-            line-height: 1.6;
-            color: #333333;
-            background-color: #fffff0;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--bg-color);
             display: flex;
             flex-direction: column;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 760px;
             width: 100%;
             margin: 0 auto;
-            padding: 20px;
+            padding: 30px 20px;
             flex: 1 0 auto;
         }
 
         a {
-            color: #333333;
+            color: var(--text-color);
             text-decoration: none;
+            transition: color 0.2s ease;
         }
 
         a:hover {
@@ -40,37 +62,40 @@
         }
 
         header {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             text-align: left;
         }
 
         nav {
-            margin-top: 15px;
-            margin-bottom: 20px;
+            margin-top: 20px;
+            margin-bottom: 25px;
         }
 
         nav a {
-            margin-right: 15px;
+            margin-right: 20px;
         }
 
         .content {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .post-title {
             font-size: 1.5em;
-            color: #1a1a1a;
+            color: var(--text-color);
+            margin-bottom: 0.5em;
         }
 
         .post-meta {
             font-size: 0.9em;
-            color: #666666;
+            color: var(--text-color);
+            opacity: 0.7;
+            margin-bottom: 1.5em;
         }
 
         pre,
         code {
-            background-color: #1a1a1a;
-            color: #ffffff;
+            background-color: var(--code-bg);
+            color: var(--code-color);
             padding: 0.2em 0.4em;
             border-radius: 3px;
             font-family: monospace;
@@ -91,7 +116,9 @@
             flex-shrink: 0;
             text-align: center;
             padding: 20px 0;
-            background-color: #fffff0;
+            background-color: var(--bg-color);
+            font-size: 0.9em;
+            color: var(--text-color);
         }
 
         .site-title {
@@ -100,73 +127,55 @@
             text-transform: lowercase;
             position: relative;
             display: inline-block;
-            text-decoration: none;
-            color: inherit;
         }
 
-        .site-title::before,
         .site-title::after {
-            content: attr(data-text);
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent-color);
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
         }
 
-        .site-title::before {
-            left: 1px;
-            text-shadow: -1px 0 #00ff00;
-            clip: rect(8px, 275px, 30px, 0);
-            animation: glitch-anim 3s infinite linear alternate-reverse;
-        }
-
-        .site-title::after {
-            left: -1px;
-            text-shadow: -1px 0 #ff00ff;
-            clip: rect(28px, 275px, 46px, 0);
-            animation: glitch-anim 2s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-anim {
-            0% {
-                clip: rect(26px, 9999px, 13px, 0);
-            }
-
-            20% {
-                clip: rect(10px, 9999px, 18px, 0);
-            }
-
-            40% {
-                clip: rect(14px, 9999px, 32px, 0);
-            }
-
-            60% {
-                clip: rect(22px, 9999px, 1px, 0);
-            }
-
-            80% {
-                clip: rect(30px, 9999px, 33px, 0);
-            }
-
-            100% {
-                clip: rect(6px, 9999px, 2px, 0);
-            }
+        .site-title:hover::after {
+            visibility: visible;
+            transform: scaleX(1);
         }
 
         .meeting-link {
             display: inline-block;
-            margin-left: 15px;
             padding: 5px 10px;
-            background-color: #0066cc;
-            color: #ffffff;
+            background-color: var(--button-bg);
+            color: var(--button-color);
             border-radius: 3px;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meeting-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s;
+        }
+
+        .meeting-link:hover::before {
+            left: 100%;
         }
 
         .meeting-link:hover {
-            background-color: #004080;
             text-decoration: none;
+            box-shadow: 0 0 10px rgba(0, 102, 204, 0.5);
         }
 
         .header-content {
@@ -179,75 +188,221 @@
         .header-text {
             flex: 1;
         }
+
+        .theme-toggle {
+            width: 40px;
+            height: 20px;
+            background-color: var(--text-color);
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 15px;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        .dark-theme .theme-toggle::before {
+            transform: translateX(20px);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        #three-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        @media (max-width: 600px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-right {
+                margin-top: 15px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .meeting-link,
+            .theme-toggle {
+                margin: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
 <body>
+    <div id="three-container"></div>
     <div class="container">
         <header>
             <div class="header-content">
                 <div class="header-text">
-                    <h1><a href="http://localhost:1313/" class="site-title" data-text="arif.sh">arif.sh</a></h1>
+                    <h1><a href="http://localhost:1313/" class="site-title">arif.sh</a></h1>
                     <p>Software Developer | Founder @liftOS</p>
                 </div>
-                <a href="https://cal.com/arifcodes/letstalkstartups" class="meeting-link">Let's talk startups</a>
+                <div class="header-right">
+                    <a href="https://cal.com/arifcodes/letstalkstartups" class="meeting-link">Let's talk startups</a>
+                    <div class="theme-toggle" role="button" aria-label="Toggle dark mode" tabindex="0"></div>
+                </div>
             </div>
             <nav>
                 
             </nav>
         </header>
-        <main class="content">
+        <main class="content fade-in">
             
-<div class="post-list">
+<div class="post-list-container">
     
     <article class="post-item">
-        <div class="post-date">2024-06-23</div>
+        <time class="post-date">2024-07-08</time>
+        <h2 class="post-title"><a href="/posts/lifebalance/">Balancing the Highs and Lows of Entrepreneurship: My Journey with liftOS</a></h2>
+    </article>
+    
+    <article class="post-item">
+        <time class="post-date">2024-06-23</time>
         <h2 class="post-title"><a href="/posts/go-concurrency/">Embracing Concurrency in Go: A Senior Developer&#39;s Perspective</a></h2>
     </article>
     
     <article class="post-item">
-        <div class="post-date">2023-11-09</div>
+        <time class="post-date">2023-11-09</time>
         <h2 class="post-title"><a href="/posts/go-wasm/">Real-Time WebSockets with Go and WebAssembly: A Complete Guide</a></h2>
     </article>
     
     <article class="post-item">
-        <div class="post-date">2021-01-20</div>
+        <time class="post-date">2021-01-20</time>
         <h2 class="post-title"><a href="/posts/gunicorn/">Senior Developer&#39;s Guide to Dockerizing Django with NumPy and Gunicorn</a></h2>
     </article>
+    
+
     
 </div>
 
 <style>
-    .post-list {
-        width: 100%;
+    .post-list-container {
+        max-width: 760px;
+        margin: 0 auto;
     }
+
+    .page-title {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        text-align: left;
+    }
+
     .post-item {
         margin-bottom: 1.5rem;
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 1rem;
+        display: flex;
+        align-items: baseline;
+        justify-content: flex-start;
     }
+
     .post-date {
-        font-size: 0.8rem;
-        color: #666;
+        font-size: 0.9rem;
+        color: var(--text-color);
+        opacity: 0.7;
+        min-width: 100px;
+        margin-right: 1rem;
     }
+
     .post-title {
-        margin: 0.2rem 0;
-        font-size: 1.2rem;
+        font-size: 1rem;
+        margin: 0;
     }
+
     .post-title a {
+        color: var(--text-color);
         text-decoration: none;
-        color: inherit;
+        transition: color 0.3s ease;
     }
+
     .post-title a:hover {
-        text-decoration: underline;
+        color: var(--accent-color);
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+        list-style: none;
+        padding: 0;
+    }
+
+    .pagination li {
+        margin: 0 0.5rem;
+    }
+
+    .pagination li a {
+        padding: 0.5rem 1rem;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        text-decoration: none;
+        border: 1px solid var(--text-color);
+        border-radius: 3px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .pagination li.disabled a,
+    .pagination li.active a {
+        background-color: var(--text-color);
+        color: var(--bg-color);
+        cursor: default;
+    }
+
+    .pagination li a:hover:not(.active):not(.disabled) {
+        background-color: var(--text-color);
+        color: var(--bg-color);
+    }
+
+    @media (max-width: 600px) {
+        .post-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .post-date {
+            margin-bottom: 0.3rem;
+        }
     }
 </style>
 
         </main>
     </div>
-    <footer>
-        <p>&copy; 2024 Arif</p>
-    </footer>
+    <script src="/js/theme-toggle.js"></script>
+    <script src="/js/three-background.js"></script>
 </body>
 
 </html>
